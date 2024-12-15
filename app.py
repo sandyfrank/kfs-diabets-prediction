@@ -72,7 +72,7 @@ age_label = "Age" if language == "English" else "Âge"
 hypertension_label = "Hypertension (0 for No, 1 for Yes)" if language == "English" else "Hypertension (0 pour Non, 1 pour Oui)"
 heart_disease_label = "Heart Disease (0 for No, 1 for Yes)" if language == "English" else "Maladie Cardiaque (0 pour Non, 1 pour Oui)"
 smoking_history_label = "Smoking History (0: Never, 1: No-info, 2: Former, 3: Current, 4: Not-Current)" if language == "English" else "Historique de Tabagisme (0 : Jamais, 1 : Sans Info, 2 : Ancien, 3 : Actuel, 4 : Non Actuel)"
-bmi_label = "BMI (real number between 0 and 20)" if language == "English" else "IMC (nombre réel entre 0 et 20)"
+bmi_label = "BMI (real number between 0 and 50)" if language == "English" else "IMC (nombre réel entre 0 et 50)"
 HbA1c_level_label = "HbA1c Level (real number between 0 and 100)" if language == "English" else "Niveau d'HbA1c (nombre réel entre 0 et 100)"
 blood_glucose_label = "Blood Glucose Level in mg/dL (real number between 0 and 300)" if language == "English" else "Niveau de Glucose Sanguin en mg/dL (nombre réel entre 0 et 300)"
 
@@ -81,7 +81,7 @@ age = st.number_input(age_label, 0, 200)
 hypertension = st.number_input(hypertension_label, 0, 1)
 heart_disease = st.number_input(heart_disease_label, 0, 1)
 smoking_history = st.number_input(smoking_history_label, 0, 4)
-bmi = st.number_input(bmi_label, 0.0, 20.0)
+bmi = st.number_input(bmi_label, 0.0, 50.0)
 HbA1c_level = st.number_input(HbA1c_level_label, 0.0, 100.0)
 blood_glucose_level = st.number_input(blood_glucose_label, 0.0, 300.0)
 

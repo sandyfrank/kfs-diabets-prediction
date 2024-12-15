@@ -27,17 +27,17 @@ gender = st.number_input("Gender, 0 for female and 1 for male ",0,1)
 
 age = st.number_input("Age", 0, 200)
 
-hypertension = st.number_input("hypertension, 0 for NO and 1 for Yes ", 0, 1)
+hypertension = st.number_input("hypertension, 0 for No and 1 for Yes ", 0, 1)
 
-heart_disease = st.number_input("heart_disease, 0 for NO and 1 for Yes", 0, 1)
+heart_disease = st.number_input("heart_disease, 0 for No and 1 for Yes", 0, 1)
 
-smoking_history = st.number_input("smoking_history, 0 for never, 1 for No info, 2 for former, 3 for current and 4 for not current ", 0, 4)
+smoking_history = st.number_input("smoking history, 0 for Never, 1 for No-info, 2 for Former, 3 for Current and 4 for Not-Current ", 0, 4)
 
-bmi = st.number_input("bmi, real number between 0 and 20 ", 0, 20)
+bmi = st.number_input("BMI, real number between 0 and 20 ", 0, 20)
 
-HbA1c_level = st.number_input("HbA1c_level,  real number between 0 and 20", 0, 20)
+HbA1c_level = st.number_input("Haemoglobin A1c level,  real number between 0 and 100", 0, 100)
 
-blood_glucose_level = st.number_input("blood_glucose_level, real number between 0 and 300 ", 0, 300)
+blood_glucose_level = st.number_input("Blood glucose level in mg/dL, real number between 0 and 300 ", 0, 300)
 
 
 

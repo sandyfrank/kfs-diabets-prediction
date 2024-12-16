@@ -99,9 +99,9 @@ if st.button("Diabetes Diagnostic Result" if language == "English" else "Résult
 
     if prediction[0] == 1:
         if language == "English":
-            st.markdown("<p class='result'>According to the AI, this person has a very high probability of being diabetic, so it's urgent to consult a doctor.</p>", unsafe_allow_html=True)
+            st.markdown("<p class='result'>According to the AI, we are really sorry to say but it seems like you are Diabetic, so it's urgent to consult a doctor.</p>", unsafe_allow_html=True)
         else:
-            st.markdown("<p class='result'>D'après l'IA, cette personne a une très forte probabilité d'être diabétique, il est donc urgent de consulter un médecin.</p>", unsafe_allow_html=True)
+            st.markdown("<p class='result'>D'après l'IA, Nous sommes vraiment désolés, mais il semble que vous soyez diabétique., il est donc urgent de consulter un médecin.</p>", unsafe_allow_html=True)
     else:
         if language == "English":
             st.markdown("<p class='result'>According to the AI, this person is not diabetic.</p>", unsafe_allow_html=True)

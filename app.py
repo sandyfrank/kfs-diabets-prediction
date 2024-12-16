@@ -81,9 +81,9 @@ age = st.number_input(age_label, 0, 200)
 hypertension = st.number_input(hypertension_label, 0, 1)
 heart_disease = st.number_input(heart_disease_label, 0, 1)
 smoking_history = st.number_input(smoking_history_label, 0, 4)
-bmi = st.number_input(bmi_label, 0.0, 50.0)
+bmi = st.number_input(bmi_label, 0.0, 100.0)
 HbA1c_level = st.number_input(HbA1c_level_label, 0.0, 100.0)
-blood_glucose_level = st.number_input(blood_glucose_label, 0.0, 300.0)
+blood_glucose_level = st.number_input(blood_glucose_label, 0.0, 1000.0)
 
 st.markdown("</div>", unsafe_allow_html=True)
 

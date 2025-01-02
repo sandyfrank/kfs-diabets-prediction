@@ -4,8 +4,12 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 
 # Load model and scaler
-model = joblib.load('best_xgb_model.joblib')
-scalar = joblib.load('scaler.joblib')
+try:
+    model = joblib.load('best_xgb_model.joblib')
+    scalar = joblib.load('scaler.joblib')
+except Exception as e:
+    st.error(f"Error loading model or scaler: {e}")
+    st.stop()
 
 # Streamlit HTML customization
 st.markdown("""
@@ -55,17 +59,16 @@ st.markdown("""
 
 # Language selection
 language = st.sidebar.selectbox("Select Language / Sélectionnez la langue", ["English", "Français"])
+
 #############################
 # Define the pages of the app
 def home_page():
-    
-    st.title("Welcome to Diabetes Prediction")
-    st.write("This app helps predict the likelihood of diabetes based on various inputs.")
+    st.title("Welcome to KFS AI4Helalth Diabetes Prediction App ")
+    st.write("This app helps predict the likelihood of diabetes based on various factors using AI .")
     st.write("Use the sidebar to navigate between the home page and educational resources.")
 
 def education_page():
-    st.title("Education about Diabetes")
-    
+    st.title("Education about Diabetes") 
     # Section 1: General Information
     st.header("1. Généralités")
     st.write("""
@@ -215,48 +218,39 @@ def prediction_page():
     
     # Prepare input data for prediction
     input_data = np.array([[gender, age, hypertension, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level]])
-    input_data = scalar.transform(input_data)
+    
+    # Check if the scaler exists and is loaded properly
+    if scalar:
+        input_data = scalar.transform(input_data)
+    else:
+        st.error("Scaler is missing or couldn't be loaded.")
+        st.stop()
     
     # Button and results
     if st.button("Diabetes Diagnostic Result" if language == "English" else "Résultat du Diagnostic du Diabète", key="predict"):
-        prediction = model.predict(input_data)
-    
-        st.markdown("<div class='form-container'>", unsafe_allow_html=True)
-    
-        if prediction[0] == 1:
-            if language == "English":
-                st.markdown("<p class='result'>According to the AI, we are really sorry to say but it seems like you are Diabetic, so it's urgent to consult a doctor.</p>", unsafe_allow_html=True)
+        try:
+            prediction = model.predict(input_data)
+            st.markdown("<div class='form-container'>", unsafe_allow_html=True)
+            
+            if prediction[0] == 1:
+                result_message = "According to the AI, we are really sorry to say but it seems like you are Diabetic, so it's urgent to consult a doctor." if language == "English" else "D'après l'IA, Nous sommes vraiment désolés, mais il semble que vous soyez diabétique., il est donc urgent de consulter un médecin."
             else:
-                st.markdown("<p class='result'>D'après l'IA, Nous sommes vraiment désolés, mais il semble que vous soyez diabétique., il est donc urgent de consulter un médecin.</p>", unsafe_allow_html=True)
-        else:
-            if language == "English":
-                st.markdown("<p class='result'>According to the AI, this person is not diabetic.</p>", unsafe_allow_html=True)
-            else:
-                st.markdown("<p class='result'>D'après l'IA, cette personne n'est pas diabétique.</p>", unsafe_allow_html=True)
-    
-        st.markdown("</div>", unsafe_allow_html=True)
+                result_message = "According to the AI, this person is not diabetic." if language == "English" else "D'après l'IA, cette personne n'est pas diabétique."
+            
+            st.markdown(f"<p class='result'>{result_message}</p>", unsafe_allow_html=True)
+        
+        except Exception as e:
+            st.error(f"Error during prediction: {e}")
 
-
-# Language selection
-language = st.sidebar.selectbox("Select Language / Sélectionnez la langue", ["English", "Français"])
-
-# Title and subtitle
-if language == "English":
-    st.markdown("<div class='main-title'>KFS AI4Health Diabetes Prediction using AI App</div>", unsafe_allow_html=True)
-    st.markdown("<div class='sub-title'>Enter the following details to predict diabetes</div>", unsafe_allow_html=True)
-else:
-    st.markdown("<div class='main-title'>Application de KFS AI4Health utilisant l'IA pour la Prédiction du Diabète</div>", unsafe_allow_html=True)
-    st.markdown("<div class='sub-title'>Entrez les informations suivantes pour prédire le diabète</div>", unsafe_allow_html=True)
-
-# Sidebar for navigation
+# Main app logic
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Select a page", ["Home", "Education about Diabetes", "Diabetes Prediction"])
+page = st.sidebar.radio("Go to", ["Home", "Education", "Prediction"])
 
-# Call the appropriate function based on page selection
 if page == "Home":
     home_page()
-elif page == "Education about Diabetes":
+elif page == "Education":
     education_page()
-elif page == "Diabetes Prediction":
+elif page == "Prediction":
     prediction_page()
+
 

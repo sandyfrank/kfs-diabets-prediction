@@ -64,26 +64,17 @@ else:
     st.markdown("<div class='main-title'>Application de KFS AI4Health utilisant l'IA pour la Prédiction du Diabète</div>", unsafe_allow_html=True)
     st.markdown("<div class='sub-title'>Entrez les informations suivantes pour prédire le diabète</div>", unsafe_allow_html=True)
 
-# Input form
+# Input form with interactive widgets
 st.markdown("<div class='form-container'>", unsafe_allow_html=True)
 
-gender_label = "Gender (0 for Female, 1 for Male)" if language == "English" else "Genre (0 pour Femme, 1 pour Homme)"
-age_label = "Age" if language == "English" else "Âge"
-hypertension_label = "Hypertension (0 for No, 1 for Yes)" if language == "English" else "Hypertension (0 pour Non, 1 pour Oui)"
-heart_disease_label = "Heart Disease (0 for No, 1 for Yes)" if language == "English" else "Maladie Cardiaque (0 pour Non, 1 pour Oui)"
-smoking_history_label = "Smoking History (0: Never, 1: No-info, 2: Former, 3: Current, 4: Not-Current)" if language == "English" else "Historique de Tabagisme (0 : Jamais, 1 : Sans Info, 2 : Ancien, 3 : Actuel, 4 : Non Actuel)"
-bmi_label = "BMI (real number between 0 and 100)" if language == "English" else "IMC (nombre réel entre 0 et 100)"
-HbA1c_level_label = "HbA1c Level (real number between 0 and 100)" if language == "English" else "Niveau d'HbA1c (nombre réel entre 0 et 100)"
-blood_glucose_label = "Blood Glucose Level in mg/dL (real number between 0 and 1000)" if language == "English" else "Niveau de Glucose Sanguin en mg/dL (nombre réel entre 0 et 1000)"
-
-gender = st.number_input(gender_label, 0, 1)
-age = st.number_input(age_label, 0, 200)
-hypertension = st.number_input(hypertension_label, 0, 1)
-heart_disease = st.number_input(heart_disease_label, 0, 1)
-smoking_history = st.number_input(smoking_history_label, 0, 4)
-bmi = st.number_input(bmi_label, 0.0, 100.0)
-HbA1c_level = st.number_input(HbA1c_level_label, 0.0, 100.0)
-blood_glucose_level = st.number_input(blood_glucose_label, 0.0, 1000.0)
+gender = st.radio("Gender (0 for Female, 1 for Male)" if language == "English" else "Genre (0 pour Femme, 1 pour Homme)", [0, 1])
+age = st.slider("Age" if language == "English" else "Âge", 0, 120, 30)
+hypertension = st.checkbox("Hypertension (0 for No, 1 for Yes)" if language == "English" else "Hypertension (0 pour Non, 1 pour Oui)")
+heart_disease = st.checkbox("Heart Disease (0 for No, 1 for Yes)" if language == "English" else "Maladie Cardiaque (0 pour Non, 1 pour Oui)")
+smoking_history = st.selectbox("Smoking History (0: Never, 1: No-info, 2: Former, 3: Current, 4: Not-Current)" if language == "English" else "Historique de Tabagisme (0 : Jamais, 1 : Sans Info, 2 : Ancien, 3 : Actuel, 4 : Non Actuel)", [0, 1, 2, 3, 4])
+bmi = st.number_input("BMI (real number between 0 and 100)" if language == "English" else "IMC (nombre réel entre 0 et 100)", 0.0, 100.0, 25.0)
+HbA1c_level = st.number_input("HbA1c Level (real number between 0 and 100)" if language == "English" else "Niveau d'HbA1c (nombre réel entre 0 et 100)", 0.0, 100.0, 5.7)
+blood_glucose_level = st.number_input("Blood Glucose Level in mg/dL (real number between 0 and 1000)" if language == "English" else "Niveau de Glucose Sanguin en mg/dL (nombre réel entre 0 et 1000)", 0.0, 1000.0, 100.0)
 
 st.markdown("</div>", unsafe_allow_html=True)
 

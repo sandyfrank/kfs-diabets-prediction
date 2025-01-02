@@ -67,12 +67,12 @@ def home_page(language):
     if language == "English":
         st.markdown("<div class='main-title'>Welcome to KFS AI4Helalth Diabetes Prediction App App</div>", unsafe_allow_html=True)
         st.markdown("<div class='sub-title'>This app helps predict the likelihood of diabetes based on various risks factors using AI </div>", unsafe_allow_html=True)
-        st.markdown("<div class='sub-title'>Use the sidebar to navigate between the home page and educational resources. </div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>Use the sidebar to navigate between the different pages. </div>", unsafe_allow_html=True)
 
     else:
         st.markdown("<div class='main-title'>Bienvenue sur l'application de prédiction du diabète de KFS AI4Helalth</div>", unsafe_allow_html=True)
         st.markdown("<div class='sub-title'>Cette application permet de prédire la probabilité d'un diabète en fonction de divers facteurs de risque grâce à l'IA </div>", unsafe_allow_html=True)
-        st.markdown("<div class='sub-title'>Utilisez la barre latérale pour naviguer entre la page d'accueil et les ressources éducatives. </div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>Utilisez la barre latérale pour naviguer entre les différentes pages. </div>", unsafe_allow_html=True)
         
 def education_page():
     st.title("Education sur le Diabetes") 

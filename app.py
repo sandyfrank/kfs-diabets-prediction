@@ -62,13 +62,20 @@ language = st.sidebar.selectbox("Select Language / Sélectionnez la langue", ["E
 
 #############################
 # Define the pages of the app
-def home_page():
-    st.title("Welcome to KFS AI4Helalth Diabetes Prediction App ")
-    st.write("This app helps predict the likelihood of diabetes based on various factors using AI .")
-    st.write("Use the sidebar to navigate between the home page and educational resources.")
+def home_page(language):
+    # Title and subtitle
+    if language == "English":
+        st.markdown("<div class='main-title'>Welcome to KFS AI4Helalth Diabetes Prediction App App</div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>This app helps predict the likelihood of diabetes based on various risks factors using AI </div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>Use the sidebar to navigate between the home page and educational resources. </div>", unsafe_allow_html=True)
 
+    else:
+        st.markdown("<div class='main-title'>Bienvenue sur l'application de prédiction du diabète de KFS AI4Helalth</div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>Cette application permet de prédire la probabilité d'un diabète en fonction de divers facteurs de risque grâce à l'IA </div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>Utilisez la barre latérale pour naviguer entre la page d'accueil et les ressources éducatives. </div>", unsafe_allow_html=True)
+        
 def education_page():
-    st.title("Education about Diabetes") 
+    st.title("Education sur le Diabetes") 
     # Section 1: General Information
     st.header("1. Généralités")
     st.write("""
@@ -201,7 +208,15 @@ def education_page():
     """)
 
 
-def prediction_page():
+def prediction_page(language):
+    # Title and subtitle
+    if language == "English":
+        st.markdown("<div class='main-title'>KFS AI4Health Diabetes Prediction using AI App</div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>Enter the following details to predict diabetes</div>", unsafe_allow_html=True)
+    else:
+        st.markdown("<div class='main-title'>Application de KFS AI4Health utilisant l'IA pour la Prédiction du Diabète</div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-title'>Entrez les informations suivantes pour prédire le diabète</div>", unsafe_allow_html=True)
+
     # Input form with interactive widgets
     st.markdown("<div class='form-container'>", unsafe_allow_html=True)
     
@@ -247,10 +262,10 @@ st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Education", "Prediction"])
 
 if page == "Home":
-    home_page()
+    home_page(language)
 elif page == "Education":
     education_page()
 elif page == "Prediction":
-    prediction_page()
+    prediction_page(language)
 
 

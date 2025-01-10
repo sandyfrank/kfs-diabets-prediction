@@ -9,3 +9,6 @@ optuna
 scikit-learn
 ydata-profiling
 opencv-contrib-python
+opencv-python
+tensorflow
+pillow

@@ -41,7 +41,7 @@ if uploaded_file is not None:
     # Prétraitement et prédiction
     processed_image = preprocess_image(image)
     mask = model.predict(processed_image)
-    mask = (mask[0] > 0.1).astype(np.uint8)
+    mask = (mask[0] > 0.6).astype(np.uint8)
 
     # Superposer le masque sur l'image originale
     image_with_mask = overlay_mask_on_image(image, mask, color=(0, 255, 0), alpha=0.5)  # Green color with transparency

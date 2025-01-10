@@ -8,6 +8,6 @@ xgboost
 optuna
 scikit-learn
 ydata-profiling
-opencv-python==4.6.0.66
+opencv-python
 tensorflow
 pillow

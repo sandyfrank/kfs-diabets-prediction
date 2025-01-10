@@ -8,3 +8,4 @@ xgboost
 optuna
 scikit-learn
 ydata-profiling
+opencv-contrib-python

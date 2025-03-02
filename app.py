@@ -65,7 +65,7 @@ language = st.sidebar.selectbox("Select Language / Sélectionnez la langue", ["E
 def home_page(language):
     # Title and subtitle
     if language == "English":
-        st.markdown("<div class='main-title'>Welcome to KFS AI4Helalth Diabetes Prediction App App</div>", unsafe_allow_html=True)
+        st.markdown("<div class='main-title'>Welcome to KFS AI4Helalth Diabetes Prediction App</div>", unsafe_allow_html=True)
         st.markdown("<div class='sub-title'>This app helps predict the likelihood of diabetes based on various risks factors using AI </div>", unsafe_allow_html=True)
         st.markdown("<div class='sub-title'>Use the sidebar to navigate between the different pages. </div>", unsafe_allow_html=True)
 
